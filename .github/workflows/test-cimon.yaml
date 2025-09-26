@@ -1,0 +1,36 @@
+name: Test Cimon Monitoring
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test-cimon:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Setup Cimon monitoring
+      uses: cycodelabs/cimon-action@c76b77d9b9f8b0698fa25015a62e554e22a2d459
+      
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Test network calls to public IPs
+      run: |
+        echo "Testing network connectivity with curl to various public services..."
+        
+        echo "Calling Google DNS..."
+        curl -s --max-time 10 https://dns.google/resolve?name=example.com
+        
+        echo "Calling Google main site..."
+        curl -s --max-time 10 -I https://www.google.com
+        
+        echo "Calling GitHub API..."
+        curl -s --max-time 10 https://api.github.com/zen
+        
+        echo "Calling HTTPBin for testing..."
+        curl -s --max-time 10 https://httpbin.org/ip
+        
+        echo "All network calls completed successfully!"
