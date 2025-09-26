@@ -12,7 +12,7 @@ jobs:
     
     steps:
     - name: Setup Cimon monitoring
-      uses: cycodelabs/cimon-action@1c3e30d508634b3f4a60b02843126c9f93944d80
+      uses: cycodelabs/cimon-action@c76b77d9b9f8b0698fa25015a62e554e22a2d459
       
     - name: Checkout code
       uses: actions/checkout@v4
