@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
     - name: Setup Cimon monitoring
       uses: cycodelabs/cimon-action@v0
+      
+    - name: Checkout code
+      uses: actions/checkout@v4
       
     - name: Test network calls to public IPs
       run: |
